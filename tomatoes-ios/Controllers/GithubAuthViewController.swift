@@ -63,14 +63,13 @@ extension GithubAuthViewController: UIWebViewDelegate {
             let object = result as? JSONObject
             if let accessToken = object?["access_token"] as? String {
                 let session = Session(provider: .github, accessToken: accessToken)
-                session.create(completion: { (result) in
+                session.create { (result) in
                     switch result {
-                    case .success(let token):
-                        print(token)
+                    case .success:
                         self.dismiss(animated: true, completion: nil)
                     case .failure(let error): print(error?.localizedDescription ?? "no error description")
                     }
-                })
+                }
             }
         }
         return false

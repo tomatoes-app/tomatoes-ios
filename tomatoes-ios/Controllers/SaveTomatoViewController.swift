@@ -57,14 +57,15 @@ class SaveTomatoViewController: UIViewController {
         tomato.tagList = taglist
         tomato.create { [weak self] (result) in
             switch result {
-            case .success: self?.onDismiss?()
+            case .success:
+                self?.dismiss(animated: true) { [weak self] in
+                    self?.onDismiss?()
+                }
             case .failure(let error): print(error?.localizedDescription ?? "")
             }
-            
         }
     }
     
-
     func setupViews() {
         view.backgroundColor = UIColor.cyan.withAlphaComponent(0.6)
         view.addSubview(textView)

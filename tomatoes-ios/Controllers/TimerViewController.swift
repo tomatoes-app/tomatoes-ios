@@ -21,7 +21,7 @@ class TimerViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = .white
-        label.text = "25m\n00s"
+        label.text = "\(TomatoType.work.rawValue)m\n00s"
         return label
     }()
     
@@ -58,19 +58,11 @@ class TimerViewController: UIViewController {
             let secondsString = String(format: "%02d", seconds)
             self.countdownLabel.text = "\(minutesString)m\n\(secondsString)s"
         }
-
-//        User.read { (result, error) in
-//            if let user = result as? User {
-//               print(user.name ?? "no name")
-//                print(user.authorizations?.first?.provider ?? "no name")
-//
-//            }
-//        }
     }
     
     func start() {
         setColor(color: magentaInk)
-        TomatoesTimer.instance.start(5) {
+        TomatoesTimer.instance.start(TomatoType.work.seconds) {
             let save = SaveTomatoViewController { [weak self] in
                 self?.startPause()
             }
@@ -85,8 +77,8 @@ class TimerViewController: UIViewController {
     
     func startPause() {
         tomatoesCount = tomatoesCount + 1
-        let pauseDuration: UInt = tomatoesCount % 4 == 0 ? 15 : 5
-        TomatoesTimer.instance.start(pauseDuration) {
+        let tomatoType: TomatoType = tomatoesCount % 4 == 0 ? .shorBreak : .longBreak
+        TomatoesTimer.instance.start(tomatoType.seconds) {
             
         }
     }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C7EBF5741E478F8A00A5880C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5731E478F8A00A5880C /* AppDelegate.swift */; };
-		C7EBF5761E478F8A00A5880C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5751E478F8A00A5880C /* ViewController.swift */; };
 		C7EBF5791E478F8A00A5880C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF5771E478F8A00A5880C /* Main.storyboard */; };
 		C7EBF57B1E478F8A00A5880C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF57A1E478F8A00A5880C /* Assets.xcassets */; };
 		C7EBF57E1E478F8A00A5880C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF57C1E478F8A00A5880C /* LaunchScreen.storyboard */; };
@@ -17,12 +16,12 @@
 		C7EBF59E1E47906B00A5880C /* GithubAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5951E47906B00A5880C /* GithubAuthViewController.swift */; };
 		C7EBF59F1E47906B00A5880C /* SaveTomatoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5961E47906B00A5880C /* SaveTomatoViewController.swift */; };
 		C7EBF5A01E47906B00A5880C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5971E47906B00A5880C /* SecondViewController.swift */; };
-		C7EBF5A11E47906B00A5880C /* TomatoesTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5991E47906B00A5880C /* TomatoesTimer.swift */; };
 		C7EBF5A21E47906B00A5880C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF59B1E47906B00A5880C /* Config.swift */; };
 		C7EBF5A31E47906B00A5880C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF59C1E47906B00A5880C /* Network.swift */; };
 		C7EBF5A91E47930900A5880C /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF5A81E47930900A5880C /* Config.plist */; };
 		C7EBF5AD1E47970500A5880C /* Tomatoes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7EBF5A61E47916500A5880C /* Tomatoes.framework */; };
 		C7EBF5AE1E47970500A5880C /* Tomatoes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7EBF5A61E47916500A5880C /* Tomatoes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7EBF5B71E47CBB700A5880C /* TomatoesTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5B61E47CBB700A5880C /* TomatoesTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 /* Begin PBXFileReference section */
 		C7EBF5701E478F8A00A5880C /* tomatoes-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tomatoes-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EBF5731E478F8A00A5880C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C7EBF5751E478F8A00A5880C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C7EBF5781E478F8A00A5880C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7EBF57A1E478F8A00A5880C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7EBF57D1E478F8A00A5880C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,11 +62,11 @@
 		C7EBF5951E47906B00A5880C /* GithubAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAuthViewController.swift; sourceTree = "<group>"; };
 		C7EBF5961E47906B00A5880C /* SaveTomatoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTomatoViewController.swift; sourceTree = "<group>"; };
 		C7EBF5971E47906B00A5880C /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		C7EBF5991E47906B00A5880C /* TomatoesTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TomatoesTimer.swift; sourceTree = "<group>"; };
 		C7EBF59B1E47906B00A5880C /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		C7EBF59C1E47906B00A5880C /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C7EBF5A61E47916500A5880C /* Tomatoes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tomatoes.framework; path = Carthage/Build/iOS/Tomatoes.framework; sourceTree = SOURCE_ROOT; };
 		C7EBF5A81E47930900A5880C /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = SOURCE_ROOT; };
+		C7EBF5B61E47CBB700A5880C /* TomatoesTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TomatoesTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				C7EBF5731E478F8A00A5880C /* AppDelegate.swift */,
-				C7EBF5751E478F8A00A5880C /* ViewController.swift */,
 				C7EBF5931E47906B00A5880C /* Controllers */,
-				C7EBF5981E47906B00A5880C /* Model */,
 				C7EBF59A1E47906B00A5880C /* Utility */,
 				C7EBF5771E478F8A00A5880C /* Main.storyboard */,
 				C7EBF57A1E478F8A00A5880C /* Assets.xcassets */,
@@ -146,17 +142,10 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		C7EBF5981E47906B00A5880C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C7EBF5991E47906B00A5880C /* TomatoesTimer.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		C7EBF59A1E47906B00A5880C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C7EBF5B61E47CBB700A5880C /* TomatoesTimer.swift */,
 				C7EBF59B1E47906B00A5880C /* Config.swift */,
 				C7EBF59C1E47906B00A5880C /* Network.swift */,
 			);
@@ -216,6 +205,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = WN6G7U99K4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					C7EBF5831E478F8A00A5880C = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -270,11 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7EBF5A11E47906B00A5880C /* TomatoesTimer.swift in Sources */,
+				C7EBF5B71E47CBB700A5880C /* TomatoesTimer.swift in Sources */,
 				C7EBF5A01E47906B00A5880C /* SecondViewController.swift in Sources */,
 				C7EBF59D1E47906B00A5880C /* TimerViewController.swift in Sources */,
 				C7EBF59E1E47906B00A5880C /* GithubAuthViewController.swift in Sources */,
-				C7EBF5761E478F8A00A5880C /* ViewController.swift in Sources */,
 				C7EBF5A31E47906B00A5880C /* Network.swift in Sources */,
 				C7EBF5A21E47906B00A5880C /* Config.swift in Sources */,
 				C7EBF59F1E47906B00A5880C /* SaveTomatoViewController.swift in Sources */,
@@ -423,6 +416,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "tomatoes-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gii.tomatoes-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -440,6 +434,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "tomatoes-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gii.tomatoes-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";

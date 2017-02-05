@@ -34,21 +34,15 @@ struct Network {
         }
     }
     
-    static func perfomRequest(_ url: URL, accessToken: String? = nil, parameters: JSONObject? = nil, method: String, completion: (ResponseBlock)?) {
+    static func perfomRequest(_ url: URL, parameters: JSONObject? = nil, method: String, completion: (ResponseBlock)?) {
         var request = URLRequest(url: url)
         request.httpMethod = method
         request.httpBody = Network.serialize(parameters: parameters)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        if let accessToken = accessToken {
-            request.setValue(accessToken, forHTTPHeaderField: "Authorization")
-        }
+        
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
-            if let response = response as? HTTPURLResponse {
-                print(response.statusCode)
-                print(response.debugDescription)
-            }
             DispatchQueue.main.async {
                 completion?(Network.deserialize(data: data), error)
             }

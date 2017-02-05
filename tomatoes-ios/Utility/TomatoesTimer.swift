@@ -8,6 +8,16 @@
 
 import Foundation
 
+enum TomatoType: UInt {
+    case work = 25
+    case shorBreak = 5
+    case longBreak = 15
+    
+    var seconds: UInt {
+        return rawValue * 60
+    }
+}
+
 class TomatoesTimer {
 
     static var instance = TomatoesTimer()
@@ -18,6 +28,7 @@ class TomatoesTimer {
     
     func start(_ duration: UInt, completion: (() -> ())?) {
         secondsCounter = duration
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.secondsCounter = self.secondsCounter - 1
             let remainingMinutes = (self.secondsCounter % 3600) / 60
