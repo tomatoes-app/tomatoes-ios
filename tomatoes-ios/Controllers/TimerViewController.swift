@@ -9,43 +9,42 @@
 import UIKit
 import Tomatoes
 
-let magentaInk = UIColor(red: 255/255, green: 0, blue: 144/255, alpha: 1)
-
 class TimerViewController: UIViewController {
     
     var tomatoesCount = 0
     
     lazy var countdownLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.monospacedDigitSystemFont(ofSize: 140, weight: 200)
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 120, weight: 200)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .white
-        label.text = "\(TomatoType.work.rawValue)m\n00s"
+        label.textColor = .whiteSnow
+        label.textAlignment = .center
+        label.text = "\(TomatoType.work.rawValue)\n00"
         return label
     }()
     
-    lazy var startButton: UIButton = {
+    lazy var pauseButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: 200)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 60
-        button.backgroundColor = .white
-        button.setTitle("START", for: .normal)
-        button.addTarget(self, action: #selector(start), for: .touchUpInside)
+        button.backgroundColor = .whiteSnow
+        button.setTitle("PAUSE", for: .normal)
+        button.addTarget(self, action: #selector(pause), for: .touchUpInside)
         return button
     }()
     
     func setColor(color: UIColor) {
         view.backgroundColor = color
-        startButton.setTitleColor(color, for: .normal)
+        pauseButton.setTitleColor(color, for: .normal)
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        setColor(color: magentaInk)
-        
         navigationController?.setNavigationBarHidden(true, animated: false)
+
+        setColor(color: .redTomato)
         setupViews()
         
         if !Session.isAuthenticated {
@@ -56,12 +55,13 @@ class TimerViewController: UIViewController {
         TomatoesTimer.instance.onTick = { (minutes, seconds) in
             let minutesString = String(format: "%02d", minutes)
             let secondsString = String(format: "%02d", seconds)
-            self.countdownLabel.text = "\(minutesString)m\n\(secondsString)s"
+            self.countdownLabel.text = "\(minutesString)\n\(secondsString)"
         }
+        start()
     }
     
     func start() {
-        setColor(color: magentaInk)
+        setColor(color: .redTomato)
         TomatoesTimer.instance.start(TomatoType.work.seconds) {
             let save = SaveTomatoViewController { [weak self] in
                 self?.startPause()
@@ -69,15 +69,19 @@ class TimerViewController: UIViewController {
             save.modalPresentationStyle = .currentContext
             save.modalTransitionStyle = .crossDissolve
             self.present(save , animated: true) {
-                self.setColor(color: .yellow)
+                self.setColor(color: .lightGreen)
             }
         }
+    }
     
+    func pause() {
+        TomatoesTimer.instance.stop()
+        dismiss(animated: true, completion: nil)
     }
     
     func startPause() {
         tomatoesCount = tomatoesCount + 1
-        let tomatoType: TomatoType = tomatoesCount % 4 == 0 ? .shorBreak : .longBreak
+        let tomatoType: TomatoType = tomatoesCount % 4 == 0 ? .shortBreak : .longBreak
         TomatoesTimer.instance.start(tomatoType.seconds) {
             
         }
@@ -95,18 +99,18 @@ class TimerViewController: UIViewController {
     func setupViews() {
         
         view.addSubview(countdownLabel)
-        view.addSubview(startButton)
+        view.addSubview(pauseButton)
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(contentsOf: [startButton.widthAnchor.constraint(equalToConstant: 120),
-                                        startButton.heightAnchor.constraint(equalToConstant: 120),
-                                        startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                        startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)])
+        constraints.append(contentsOf: [pauseButton.widthAnchor.constraint(equalToConstant: 120),
+                                        pauseButton.heightAnchor.constraint(equalToConstant: 120),
+                                        pauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                        pauseButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)])
         
         constraints.append(contentsOf: [countdownLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
                                        countdownLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
                                        countdownLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-                                       countdownLabel.bottomAnchor.constraint(equalTo: startButton.topAnchor)])
+                                       countdownLabel.bottomAnchor.constraint(equalTo: pauseButton.topAnchor)])
         NSLayoutConstraint.activate(constraints)
     }
 

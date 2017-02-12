@@ -22,6 +22,8 @@
 		C7EBF5AD1E47970500A5880C /* Tomatoes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7EBF5A61E47916500A5880C /* Tomatoes.framework */; };
 		C7EBF5AE1E47970500A5880C /* Tomatoes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7EBF5A61E47916500A5880C /* Tomatoes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7EBF5B71E47CBB700A5880C /* TomatoesTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5B61E47CBB700A5880C /* TomatoesTimer.swift */; };
+		C7EBF5BC1E47CFC000A5880C /* UIColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5BB1E47CFC000A5880C /* UIColorsExtension.swift */; };
+		C7EBF5BE1E47D72500A5880C /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5BD1E47D72500A5880C /* DashboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		C7EBF5A61E47916500A5880C /* Tomatoes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tomatoes.framework; path = Carthage/Build/iOS/Tomatoes.framework; sourceTree = SOURCE_ROOT; };
 		C7EBF5A81E47930900A5880C /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = SOURCE_ROOT; };
 		C7EBF5B61E47CBB700A5880C /* TomatoesTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TomatoesTimer.swift; sourceTree = "<group>"; };
+		C7EBF5BB1E47CFC000A5880C /* UIColorsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorsExtension.swift; sourceTree = "<group>"; };
+		C7EBF5BD1E47D72500A5880C /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C70E9D231E4FD35A00390689 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C7EBF5671E478F8A00A5880C = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				C7EBF5731E478F8A00A5880C /* AppDelegate.swift */,
+				C7EBF5BA1E47CFC000A5880C /* Extensions */,
 				C7EBF5931E47906B00A5880C /* Controllers */,
+				C70E9D231E4FD35A00390689 /* Views */,
 				C7EBF59A1E47906B00A5880C /* Utility */,
 				C7EBF5771E478F8A00A5880C /* Main.storyboard */,
 				C7EBF57A1E478F8A00A5880C /* Assets.xcassets */,
@@ -134,6 +147,7 @@
 		C7EBF5931E47906B00A5880C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C7EBF5BD1E47D72500A5880C /* DashboardViewController.swift */,
 				C7EBF5941E47906B00A5880C /* TimerViewController.swift */,
 				C7EBF5951E47906B00A5880C /* GithubAuthViewController.swift */,
 				C7EBF5961E47906B00A5880C /* SaveTomatoViewController.swift */,
@@ -150,6 +164,14 @@
 				C7EBF59C1E47906B00A5880C /* Network.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		C7EBF5BA1E47CFC000A5880C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C7EBF5BB1E47CFC000A5880C /* UIColorsExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +291,9 @@
 				C7EBF59D1E47906B00A5880C /* TimerViewController.swift in Sources */,
 				C7EBF59E1E47906B00A5880C /* GithubAuthViewController.swift in Sources */,
 				C7EBF5A31E47906B00A5880C /* Network.swift in Sources */,
+				C7EBF5BC1E47CFC000A5880C /* UIColorsExtension.swift in Sources */,
 				C7EBF5A21E47906B00A5880C /* Config.swift in Sources */,
+				C7EBF5BE1E47D72500A5880C /* DashboardViewController.swift in Sources */,
 				C7EBF59F1E47906B00A5880C /* SaveTomatoViewController.swift in Sources */,
 				C7EBF5741E478F8A00A5880C /* AppDelegate.swift in Sources */,
 			);

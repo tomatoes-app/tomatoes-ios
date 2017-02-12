@@ -18,8 +18,13 @@ class SaveTomatoViewController: UIViewController {
         textView.font = UIFont.monospacedDigitSystemFont(ofSize: 90, weight: 200)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
-        textView.textColor = .white
-        textView.clipsToBounds = false
+        textView.enablesReturnKeyAutomatically = true
+        textView.returnKeyType = .done
+        textView.keyboardDismissMode = .interactive
+        textView.autocorrectionType = .no
+        textView.delegate = self
+        textView.textColor = .redTomato
+        textView.tintColor = .redTomato
         return textView
     }()
     
@@ -28,9 +33,9 @@ class SaveTomatoViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: 200)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 60
-        button.backgroundColor = .white
+        button.backgroundColor = .redTomato
         button.setTitle("SAVE", for: .normal)
-        button.setTitleColor(.cyan, for: .normal)
+        button.setTitleColor(.whiteSnow, for: .normal)
         button.addTarget(self, action: #selector(save), for: .touchUpInside)
         return button
     }()
@@ -39,7 +44,12 @@ class SaveTomatoViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupViews()
-        textView.becomeFirstResponder()
+        registerKeyboardNotification()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        deregisterKeyboardNotification()
     }
     
     init(onDismiss: (()->())? = nil) {
@@ -67,7 +77,7 @@ class SaveTomatoViewController: UIViewController {
     }
     
     func setupViews() {
-        view.backgroundColor = UIColor.cyan.withAlphaComponent(0.6)
+        view.backgroundColor = .whiteSnow
         view.addSubview(textView)
         view.addSubview(saveButton)
         
@@ -77,11 +87,17 @@ class SaveTomatoViewController: UIViewController {
                                         saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                         saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)])
         
-        constraints.append(contentsOf: [textView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-                                        textView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-                                        textView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 30),
-                                        textView.bottomAnchor.constraint(equalTo: saveButton.topAnchor)])
+        constraints.append(contentsOf: [textView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                                        textView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                                        textView.topAnchor.constraint(equalTo: view.topAnchor),
+                                        textView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
+        
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        textView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: view.frame.height - saveButton.frame.minY, right: 0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,5 +105,38 @@ class SaveTomatoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Keyboard
     
+    func registerKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBottomLayoutConstraintWithNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBottomLayoutConstraintWithNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deregisterKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func updateBottomLayoutConstraintWithNotification(notification: NSNotification) {
+        guard
+            let userInfo = notification.userInfo,
+            let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            else { return }
+
+        let convertedKeyboardEndFrame = textView.convert(keyboardEndFrame, from: textView.window)
+        let bottom = max(view.frame.height - convertedKeyboardEndFrame.minY, view.frame.height - saveButton.frame.minY)
+        textView.contentInset = UIEdgeInsets(top: textView.contentInset.top, left: textView.contentInset.left, bottom: bottom, right: textView.contentInset.right)
+        textView.layoutIfNeeded()
+    }
+    
+}
+
+extension SaveTomatoViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
 }

@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        let timerController = TimerViewController()
-        navigationController = UINavigationController(rootViewController: timerController)
+        let dashboardController = DashboardViewController()
+        navigationController = UINavigationController(rootViewController: dashboardController)
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-
+        
         return true
     }
 

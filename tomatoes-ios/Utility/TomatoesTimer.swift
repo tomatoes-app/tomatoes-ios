@@ -9,12 +9,12 @@
 import Foundation
 
 enum TomatoType: UInt {
-    case work = 25
-    case shorBreak = 5
+    case work = 6
+    case shortBreak = 5
     case longBreak = 15
     
     var seconds: UInt {
-        return rawValue * 60
+        return rawValue //* 60
     }
 }
 
@@ -39,5 +39,10 @@ class TomatoesTimer {
                 completion?()
             }
         })
+    }
+    
+    func stop() {
+        timer?.invalidate()
+        timer = nil
     }
 }
