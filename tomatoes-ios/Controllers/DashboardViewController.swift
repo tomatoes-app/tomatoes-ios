@@ -19,9 +19,9 @@ enum DashboardInfo: Int {
     
     func value(from user: User?) -> String {
         switch self {
-        case .todayTomatoes: return "\(user?.tomatoesCounters?.day ?? 0)"
-        case .weekTomtoes: return "\(user?.tomatoesCounters?.week ?? 0)"
-        case .mounthTomatoes: return "\(user?.tomatoesCounters?.month ?? 0)"
+        case .todayTomatoes: return (user?.tomatoesCounters?.day ?? -1) >= 0 ? "\(user?.tomatoesCounters?.day ?? 0)" : "-"
+        case .weekTomtoes: return (user?.tomatoesCounters?.week ?? -1) >= 0 ? "\(user?.tomatoesCounters?.week ?? 0)" : "-"
+        case .mounthTomatoes: return (user?.tomatoesCounters?.month ?? -1) >= 0 ? "\(user?.tomatoesCounters?.month ?? 0)" : "-"
         }
     }
     var title: String {
@@ -68,8 +68,17 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        fetchUser()
+        
+        if !Session.isAuthenticated {
+            let auth = GithubAuthViewController()
+            navigationController?.present(auth, animated: true, completion: nil)
+        }
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchUser()
     }
     
     func setupViews() {

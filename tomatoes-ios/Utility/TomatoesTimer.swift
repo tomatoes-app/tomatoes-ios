@@ -8,13 +8,19 @@
 
 import Foundation
 
-enum TomatoType: UInt {
-    case work = 6
+enum TomatoType: TimeInterval {
+    case work = 25
     case shortBreak = 5
     case longBreak = 15
     
-    var seconds: UInt {
-        return rawValue //* 60
+    var seconds: TimeInterval {
+        return rawValue * 60
+    }
+    var notificationTitle: String {
+        switch self {
+        case .work: return "Good job! It's time to take a break."
+        default: return "Let's get back to work."
+        }
     }
 }
 
@@ -24,24 +30,38 @@ class TomatoesTimer {
     
     fileprivate var timer: Timer?
     var onTick: ((UInt, UInt) -> ())?
-    var secondsCounter: UInt = 0
+    var onFire: (() -> ())?
+    var secondsCounter: TimeInterval = 0
     
-    func start(_ duration: UInt, completion: (() -> ())?) {
+    func start(_ duration: TimeInterval, completion: (() -> ())?) {
         secondsCounter = duration
+        onFire = completion
         
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+        DispatchQueue.global().async {
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TomatoesTimer.instance.timerFired), userInfo: nil, repeats: true)
+            if let timer = self.timer {
+                RunLoop.current.add(timer, forMode: .commonModes)
+                RunLoop.current.run()
+            }
+        }
+    }
+    
+    @objc func timerFired() {
+        DispatchQueue.main.async {
+            print("\(self.secondsCounter)")
             self.secondsCounter = self.secondsCounter - 1
-            let remainingMinutes = (self.secondsCounter % 3600) / 60
-            let remainigSeconds = (self.secondsCounter % 3600) % 60
+            let remainingMinutes = (UInt(self.secondsCounter) % 3600) / 60
+            let remainigSeconds = (UInt(self.secondsCounter) % 3600) % 60
             self.onTick?(remainingMinutes, remainigSeconds)
             if self.secondsCounter <= 0 {
-                timer.invalidate()
-                completion?()
+                self.timer?.invalidate()
+                self.onFire?()
             }
-        })
+        }
     }
     
     func stop() {
+        secondsCounter = 0
         timer?.invalidate()
         timer = nil
     }

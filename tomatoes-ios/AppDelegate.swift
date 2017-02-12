@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+    
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         let dashboardController = DashboardViewController()
@@ -24,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization
+        }
         
         return true
     }
@@ -36,10 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        if TomatoesTimer.instance.secondsCounter > 0 {
+            UserDefaults.standard.set(TomatoesTimer.instance.secondsCounter, forKey: "timer_counter")
+            UserDefaults.standard.set(Date(), forKey: "background_time")
+            UserDefaults.standard.synchronize()
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        let timerCounter = UserDefaults.standard.double(forKey: "timer_counter")
+        if timerCounter > 0, let lastUpdate = UserDefaults.standard.object(forKey: "background_time") as? Date {
+            let diff = Date().timeIntervalSince1970 - lastUpdate.timeIntervalSince1970
+            if timerCounter - diff > 0 {
+                TomatoesTimer.instance.secondsCounter = timerCounter - diff
+            }
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

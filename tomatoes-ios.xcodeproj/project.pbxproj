@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C70E9D291E50053100390689 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70E9D281E50053100390689 /* LocalNotification.swift */; };
+		C70E9D2B1E5009F300390689 /* ringing.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C70E9D2A1E5009F300390689 /* ringing.m4a */; };
 		C7EBF5741E478F8A00A5880C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5731E478F8A00A5880C /* AppDelegate.swift */; };
 		C7EBF5791E478F8A00A5880C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF5771E478F8A00A5880C /* Main.storyboard */; };
 		C7EBF57B1E478F8A00A5880C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF57A1E478F8A00A5880C /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C70E9D281E50053100390689 /* LocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		C70E9D2A1E5009F300390689 /* ringing.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ringing.m4a; sourceTree = "<group>"; };
 		C7EBF5701E478F8A00A5880C /* tomatoes-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tomatoes-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EBF5731E478F8A00A5880C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7EBF5781E478F8A00A5880C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				C7EBF59A1E47906B00A5880C /* Utility */,
 				C7EBF5771E478F8A00A5880C /* Main.storyboard */,
 				C7EBF57A1E478F8A00A5880C /* Assets.xcassets */,
+				C70E9D2A1E5009F300390689 /* ringing.m4a */,
 				C7EBF57C1E478F8A00A5880C /* LaunchScreen.storyboard */,
 				C7EBF5A81E47930900A5880C /* Config.plist */,
 				C7EBF57F1E478F8A00A5880C /* Info.plist */,
@@ -162,6 +167,7 @@
 				C7EBF5B61E47CBB700A5880C /* TomatoesTimer.swift */,
 				C7EBF59B1E47906B00A5880C /* Config.swift */,
 				C7EBF59C1E47906B00A5880C /* Network.swift */,
+				C70E9D281E50053100390689 /* LocalNotification.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -228,6 +234,9 @@
 						DevelopmentTeam = WN6G7U99K4;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Keychain = {
 								enabled = 0;
 							};
@@ -267,6 +276,7 @@
 			files = (
 				C7EBF5A91E47930900A5880C /* Config.plist in Resources */,
 				C7EBF57E1E478F8A00A5880C /* LaunchScreen.storyboard in Resources */,
+				C70E9D2B1E5009F300390689 /* ringing.m4a in Resources */,
 				C7EBF57B1E478F8A00A5880C /* Assets.xcassets in Resources */,
 				C7EBF5791E478F8A00A5880C /* Main.storyboard in Resources */,
 			);
@@ -295,6 +305,7 @@
 				C7EBF5A21E47906B00A5880C /* Config.swift in Sources */,
 				C7EBF5BE1E47D72500A5880C /* DashboardViewController.swift in Sources */,
 				C7EBF59F1E47906B00A5880C /* SaveTomatoViewController.swift in Sources */,
+				C70E9D291E50053100390689 /* LocalNotification.swift in Sources */,
 				C7EBF5741E478F8A00A5880C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
