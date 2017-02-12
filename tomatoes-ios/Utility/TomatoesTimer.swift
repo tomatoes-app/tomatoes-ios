@@ -18,7 +18,13 @@ enum TomatoType: TimeInterval {
     }
     var notificationTitle: String {
         switch self {
-        case .work: return "Good job! It's time to take a break."
+        case .work: return "Pomodoro timer expired"
+        default: return "Break timer expired"
+        }
+    }
+    var notificationBody: String {
+        switch self {
+        case .work: return "Good job! Save your Tomato and take a break."
         default: return "Let's get back to work."
         }
     }
@@ -48,15 +54,16 @@ class TomatoesTimer {
     
     @objc func timerFired() {
         DispatchQueue.main.async {
-            print("\(self.secondsCounter)")
             self.secondsCounter = self.secondsCounter - 1
-            let remainingMinutes = (UInt(self.secondsCounter) % 3600) / 60
-            let remainigSeconds = (UInt(self.secondsCounter) % 3600) % 60
-            self.onTick?(remainingMinutes, remainigSeconds)
             if self.secondsCounter <= 0 {
                 self.timer?.invalidate()
                 self.onFire?()
+                return
             }
+            let remainingMinutes = (UInt(self.secondsCounter) % 3600) / 60
+            let remainigSeconds = (UInt(self.secondsCounter) % 3600) % 60
+            self.onTick?(remainingMinutes, remainigSeconds)
+           
         }
     }
     

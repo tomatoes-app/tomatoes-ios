@@ -10,11 +10,11 @@ import UserNotifications
 
 class LocalNotification {
     
-    class func scheduleNotification(title: String, timeInterval: TimeInterval) {
+    class func scheduleNotification(title: String, body: String, timeInterval: TimeInterval) {
         
         let content = UNMutableNotificationContent()
         content.title = title
-        content.body = title
+        content.body = body
         content.sound = UNNotificationSound(named: "ringing.m4a")
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)

@@ -78,7 +78,7 @@ class TimerViewController: UIViewController {
     
     func start(type: TomatoType) {
         currentType = type
-        LocalNotification.scheduleNotification(title: currentType.notificationTitle, timeInterval: TimeInterval(currentType.seconds))
+        LocalNotification.scheduleNotification(title: currentType.notificationTitle, body: currentType.notificationBody, timeInterval: TimeInterval(currentType.seconds))
         TomatoesTimer.instance.start(currentType.seconds) { [weak self] in
             switch type {
             case .work: self?.saveTomato()
