@@ -43,6 +43,7 @@ class DashboardViewController: UIViewController {
         image.backgroundColor = .redTomato
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = true
         return image
     }()
     
@@ -68,11 +69,6 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        if !Session.isAuthenticated {
-            let auth = GithubAuthViewController()
-            navigationController?.present(auth, animated: true, completion: nil)
-        }
         setupViews()
     }
     
@@ -106,6 +102,7 @@ class DashboardViewController: UIViewController {
         profileImage.layer.cornerRadius = circleDimension / 2
         tableView.dataSource = self
         tableView.delegate = self
+        profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(logout)))
     }
 
     func refresh() {
@@ -134,9 +131,20 @@ class DashboardViewController: UIViewController {
         present(timerController, animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func logout() {
+        let actionSheet = UIAlertController(title: "Are you sure you want to logout?", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Logout", style: .destructive) { (action) in
+            KeychainSwift().clear()
+            let coockies = HTTPCookieStorage.shared.cookies ?? []
+            for cookie in coockies {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+            let welcomeController = WelcomeViewController()
+            delegate?.setRoot(welcomeController)
+        })
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(actionSheet, animated: true, completion: nil)
     }
 }
 

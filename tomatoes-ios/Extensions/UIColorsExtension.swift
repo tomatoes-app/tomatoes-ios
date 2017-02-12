@@ -29,4 +29,5 @@ extension UIColor {
     static let redTomato = UIColor(hex: "FF4B54")
     static let whiteSnow = UIColor(hex: "F8F8F8")
     static let lightGreen = UIColor(hex: "27CC6A")
+    static let darkGray = UIColor(hex: "1E2327")
 }

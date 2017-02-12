@@ -17,16 +17,45 @@ class GithubAuthViewController: UIViewController {
     
     let webview = UIWebView()
 
+    let logoImage: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.image = #imageLiteral(resourceName: "GitHub-Big")
+        image.tintColor = .whiteSnow
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+
+    lazy var loadingLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 15, weight: 200)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 1
+        label.textColor = .whiteSnow
+        label.textAlignment = .center
+        label.text = "Loading..."
+        return label
+    }()
+    
     func setupViews() {
         webview.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        view.backgroundColor = .darkGray
+        webview.backgroundColor = .clear
+        webview.isOpaque = false
+        view.addSubview(logoImage)
+        view.addSubview(loadingLabel)
         view.addSubview(webview)
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(contentsOf: [webview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                       webview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                       webview.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-                                       webview.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
-        NSLayoutConstraint.activate(constraints)
+        
+        NSLayoutConstraint.activate([logoImage.heightAnchor.constraint(equalToConstant: view.frame.width * 0.3),
+                                     logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     logoImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
+                                     loadingLabel.topAnchor.constraint(equalTo: logoImage.bottomAnchor),
+                                     loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     webview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     webview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     webview.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+                                     webview.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
+        
     }
     
     override func viewDidLoad() {

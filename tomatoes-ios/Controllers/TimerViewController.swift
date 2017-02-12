@@ -106,7 +106,7 @@ class TimerViewController: UIViewController {
     
     func startPause() {
         tomatoesCount = tomatoesCount + 1
-        currentType = tomatoesCount % 4 == 0 ? .shortBreak : .longBreak
+        currentType = tomatoesCount % 4 == 0 ? .longBreak : .shortBreak
         start(type: currentType)
     }
     

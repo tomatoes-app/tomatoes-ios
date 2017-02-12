@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C70E9D291E50053100390689 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70E9D281E50053100390689 /* LocalNotification.swift */; };
 		C70E9D2B1E5009F300390689 /* ringing.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C70E9D2A1E5009F300390689 /* ringing.m4a */; };
+		C7166C431E50E46F00966BFA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7166C421E50E46E00966BFA /* WelcomeViewController.swift */; };
 		C7EBF5741E478F8A00A5880C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5731E478F8A00A5880C /* AppDelegate.swift */; };
 		C7EBF5791E478F8A00A5880C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF5771E478F8A00A5880C /* Main.storyboard */; };
 		C7EBF57B1E478F8A00A5880C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF57A1E478F8A00A5880C /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		C70E9D281E50053100390689 /* LocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		C70E9D2A1E5009F300390689 /* ringing.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ringing.m4a; sourceTree = "<group>"; };
+		C7166C421E50E46E00966BFA /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C7EBF5701E478F8A00A5880C /* tomatoes-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tomatoes-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EBF5731E478F8A00A5880C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7EBF5781E478F8A00A5880C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				C7EBF5951E47906B00A5880C /* GithubAuthViewController.swift */,
 				C7EBF5961E47906B00A5880C /* SaveTomatoViewController.swift */,
 				C7EBF5971E47906B00A5880C /* SecondViewController.swift */,
+				C7166C421E50E46E00966BFA /* WelcomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				C7EBF5A21E47906B00A5880C /* Config.swift in Sources */,
 				C7EBF5BE1E47D72500A5880C /* DashboardViewController.swift in Sources */,
 				C7EBF59F1E47906B00A5880C /* SaveTomatoViewController.swift in Sources */,
+				C7166C431E50E46F00966BFA /* WelcomeViewController.swift in Sources */,
 				C70E9D291E50053100390689 /* LocalNotification.swift in Sources */,
 				C7EBF5741E478F8A00A5880C /* AppDelegate.swift in Sources */,
 			);
