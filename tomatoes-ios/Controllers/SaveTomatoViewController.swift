@@ -81,11 +81,14 @@ class SaveTomatoViewController: UIViewController {
         view.addSubview(textView)
         view.addSubview(saveButton)
         
+        let circleDimension = view.frame.width * 0.32
+        let margin = view.frame.width * 0.05
+        
         var constraints = [NSLayoutConstraint]()
-        constraints.append(contentsOf: [saveButton.widthAnchor.constraint(equalToConstant: 120),
-                                        saveButton.heightAnchor.constraint(equalToConstant: 120),
+        constraints.append(contentsOf: [saveButton.widthAnchor.constraint(equalToConstant: circleDimension),
+                                        saveButton.heightAnchor.constraint(equalToConstant: circleDimension),
                                         saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                        saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)])
+                                        saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -margin)])
         
         constraints.append(contentsOf: [textView.leftAnchor.constraint(equalTo: view.leftAnchor),
                                         textView.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -93,6 +96,7 @@ class SaveTomatoViewController: UIViewController {
                                         textView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
         
         NSLayoutConstraint.activate(constraints)
+        saveButton.layer.cornerRadius = circleDimension / 2
     }
     
     override func viewDidLayoutSubviews() {

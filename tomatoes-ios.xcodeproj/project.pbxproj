@@ -18,7 +18,6 @@
 		C7EBF59D1E47906B00A5880C /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5941E47906B00A5880C /* TimerViewController.swift */; };
 		C7EBF59E1E47906B00A5880C /* GithubAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5951E47906B00A5880C /* GithubAuthViewController.swift */; };
 		C7EBF59F1E47906B00A5880C /* SaveTomatoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5961E47906B00A5880C /* SaveTomatoViewController.swift */; };
-		C7EBF5A01E47906B00A5880C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF5971E47906B00A5880C /* SecondViewController.swift */; };
 		C7EBF5A21E47906B00A5880C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF59B1E47906B00A5880C /* Config.swift */; };
 		C7EBF5A31E47906B00A5880C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBF59C1E47906B00A5880C /* Network.swift */; };
 		C7EBF5A91E47930900A5880C /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7EBF5A81E47930900A5880C /* Config.plist */; };
@@ -69,7 +68,6 @@
 		C7EBF5941E47906B00A5880C /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		C7EBF5951E47906B00A5880C /* GithubAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAuthViewController.swift; sourceTree = "<group>"; };
 		C7EBF5961E47906B00A5880C /* SaveTomatoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTomatoViewController.swift; sourceTree = "<group>"; };
-		C7EBF5971E47906B00A5880C /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C7EBF59B1E47906B00A5880C /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		C7EBF59C1E47906B00A5880C /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C7EBF5A61E47916500A5880C /* Tomatoes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tomatoes.framework; path = Carthage/Build/iOS/Tomatoes.framework; sourceTree = SOURCE_ROOT; };
@@ -158,7 +156,6 @@
 				C7EBF5941E47906B00A5880C /* TimerViewController.swift */,
 				C7EBF5951E47906B00A5880C /* GithubAuthViewController.swift */,
 				C7EBF5961E47906B00A5880C /* SaveTomatoViewController.swift */,
-				C7EBF5971E47906B00A5880C /* SecondViewController.swift */,
 				C7166C421E50E46E00966BFA /* WelcomeViewController.swift */,
 			);
 			path = Controllers;
@@ -333,7 +330,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7EBF5B71E47CBB700A5880C /* TomatoesTimer.swift in Sources */,
-				C7EBF5A01E47906B00A5880C /* SecondViewController.swift in Sources */,
 				C7EBF59D1E47906B00A5880C /* TimerViewController.swift in Sources */,
 				C7EBF59E1E47906B00A5880C /* GithubAuthViewController.swift in Sources */,
 				C7EBF5A31E47906B00A5880C /* Network.swift in Sources */,
